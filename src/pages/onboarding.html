@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Email Writer</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Email Writer</h1>
+        <p>Let's set up your extension before you get started.</p>
+    </div>
+
+    <form id="onboarding-form">
+        <div class="form-group">
+            <label for="api-key">API Key</label>
+            <input type="password" id="api-key" name="api-key" placeholder="Enter your API key" required>
+            <small>You'll need an Gemini API key to use this extension. Follow this <a href="https://ai.google.dev/gemini-api/docs/api-key">link</a> to see how to get one.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="organization">Organization</label>
+            <input type="text" id="organization" name="organization" placeholder="Enter your organization name (optional)">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Contact Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address">
+            <small>This will be used as your default signature email</small>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+        </div>
+
+        <div id="status-message" class="message" style="display: none;"></div>
+
+        <div class="button-group">
+            <button type="submit" id="save-button">
+                Save Settings
+            </button>
+        </div>
+    </form>
+
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <span>Saving your settings...</span>
+    </div>
+
+    <script src="onboarding.js"></script>
+</body>
+</html>

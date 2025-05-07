@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Buddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Email Buddy</h1>
+    </div>
+
+    <div class="email-card" id="current-email">
+        <div class="email-subject" id="email-subject">No email selected</div>
+        <div class="email-from" id="email-from"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="prompt">What would you like to reply?</label>
+        <textarea id="prompt" placeholder="E.g., Write a polite response declining the meeting invitation"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="tone">Tone:</label>
+        <select id="tone">
+            <option value="professional">Professional</option>
+            <option value="friendly">Friendly</option>
+            <option value="formal">Formal</option>
+            <option value="casual">Casual</option>
+        </select>
+    </div>
+
+    <div class="button-group">
+        <button id="draft-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Generate Draft
+        </button>
+        <button id="insert-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+            </svg>
+            Insert Into Email
+        </button>
+    </div>
+
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        Generating your response...
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div id="result">
+        <label for="generated-reply">Generated Reply:</label>
+        <div id="generated-reply"></div>
+        <!-- <textarea id="generated-reply" readonly></textarea> -->
+    </div>
+
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

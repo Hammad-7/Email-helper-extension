@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Email buddy",
+    "version": "1.0",
+    "description": "A Chrome extension that helps you write emails faster.",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "src/popup.html"
+    },
+    "background": {
+        "service_worker": "src/background/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://mail.google.com/*"],
+            "js": ["src/content/content.js"]
+        }
+    ],
+    "host_permissions": [
+        "https://mail.google.com/"
+    ],
+    "icons": {
+        "16": "src/icons/mail_24.png",
+        "48": "src/icons/mail_64.png",
+        "128": "src/icons/mail_64.png"
+    }
+}

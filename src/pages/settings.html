@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Writer Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Settings</h1>
+        <button id="back-btn" class="small-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+            </svg>
+            Back
+        </button>
+    </div>
+
+    <form id="settings-form">
+        <!-- API Key Section -->
+        <div class="settings-section">
+            <h2>API Key</h2>
+            <div id="api-key-display" style="display: none;">
+                <div class="form-group">
+                    <label>Status: <span id="api-key-status" class="status-dot inactive"></span></label>
+                    <div class="button-group">
+                        <button type="button" id="edit-api-key" class="small-button">Edit</button>
+                        <button type="button" id="delete-api-key" class="small-button danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="api-key-form">
+                <div class="form-group">
+                    <label for="api-key">API Key</label>
+                    <input type="password" id="api-key" name="api-key" placeholder="Enter your API key">
+                    <small>You'll need an API key to use this extension</small>
+                </div>
+                <div class="button-group">
+                    <button type="button" id="save-api-key" class="small-button">Save API Key</button>
+                </div>
+                <div id="api-key-message" class="message"></div>
+            </div>
+        </div>
+
+        <!-- Personal Information Section -->
+        <div class="settings-section">
+            <h2>Personal Information</h2>
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization" placeholder="Enter your organization name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Contact Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address">
+                <small>This will be used as your default signature email</small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+        </div>
+
+        <!-- Preferences Section -->
+        <div class="settings-section">
+            <h2>Email Preferences</h2>
+            <div class="form-group">
+                <label for="default-tone">Default Tone</label>
+                <select id="default-tone" name="default-tone">
+                    <option value="professional">Professional</option>
+                    <option value="friendly">Friendly</option>
+                    <option value="formal">Formal</option>
+                    <option value="casual">Casual</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="status-message" class="message" style="display: none;"></div>
+
+        <div class="button-group">
+            <button type="submit" id="save-settings">
+                Save All Settings
+            </button>
+        </div>
+    </form>
+
+    <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <span>Saving your settings...</span>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
