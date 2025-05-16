@@ -8,15 +8,12 @@ function getEmail() {
   const senderName = emailNode ? emailNode.getAttribute("name") : null;
   const senderEmail = emailNode ? emailNode.getAttribute("email") : null;
   
-  // Safely get email subject - check if element exists first
   const subjectElement = document.querySelector(".hP");
   const emailSubject = subjectElement ? subjectElement.innerText : null;
   
-  // Safely get email body - check if element exists first
   const bodyElement = document.querySelector(".a3s.aiL");
   const emailBody = bodyElement ? bodyElement.innerHTML : null;
   
-  // Only send message if we have at least some data
   if (senderName || senderEmail || emailSubject || emailBody) {
     chrome.runtime.sendMessage({
       action: "getEmail",
@@ -42,25 +39,21 @@ function debounce(func, wait) {
 
 const debouncedGetEmail = debounce(getEmail, 300);
 
-// Initialize the observer and start observing
 const observer = new MutationObserver(() => {
   debouncedGetEmail();
 });
 
-// Start observing changes to the DOM
 const emailContainer = document.querySelector('.AO') || document.body;
 observer.observe(emailContainer, {
   childList: true,
   subtree: true
 });
 
-// Initialize on page load with a delay to ensure DOM is ready
 setTimeout(() => {
   initializeExtension();
 }, 1500);
 
 function findGmailComposeBox() {
-  // Current Gmail compose box selectors (as of 2025)
   const selectors = [
     '[role="textbox"][aria-label="Message Body"]',
     '[role="textbox"][aria-label*="Body"]',
@@ -79,7 +72,6 @@ function findGmailComposeBox() {
   return null;
 }
 
-// Function to find and click Gmail's reply button
 function clickReplyButton() {
   const replySelectors = [
     '[data-tooltip="Reply"]',
@@ -100,7 +92,6 @@ function clickReplyButton() {
   return false;
 }
 
-// Listen for messages from the popup or background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "insertDraft") {
     const generatedReply = message.generatedReply;
@@ -143,8 +134,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     
     return true; 
   } else if (message.action === "collectEmailData") {
-    // This is now redundant - we're already collecting email data via getEmail()
-    // Just trigger getEmail() directly rather than duplicating code
     getEmail();
     sendResponse({status: "collecting"});
     return true;
